@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ELARA — Patient Profile (Nurse View)</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.profile-header{background:linear-gradient(135deg,rgba(5,150,105,0.18),rgba(37,99,235,0.12));border:1px solid rgba(5,150,105,0.25);border-radius:var(--radius-lg);padding:28px 32px;margin-bottom:20px;display:flex;align-items:center;gap:20px;}
+.profile-avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--aurora1),var(--aurora2));display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;flex-shrink:0;}
+.section-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px;margin-bottom:14px;}
+.section-card h3{font-size:13px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.patient-tab-bar{display:flex;gap:8px;margin-bottom:20px;background:rgba(255,255,255,0.04);border-radius:50px;padding:5px;width:fit-content;}
+.ptab{padding:8px 18px;border-radius:50px;font-size:13px;font-weight:600;cursor:pointer;border:none;background:transparent;color:var(--text-muted);font-family:'DM Sans',sans-serif;transition:all 0.2s;}
+.ptab.active{background:var(--aurora3);color:var(--white);}
+.ptab-content{display:none;}.ptab-content.active{display:block;}
+.req-hist-item{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--border);}
+.req-hist-item:last-child{border-bottom:none;}
+</style>
+</head>
+<body>
+<div class="aurora-bg"><div class="aurora-blob"></div></div>
+<nav class="navbar">
+  <a href="index.html" class="nav-logo"><div><span class="nav-logo-text">ELARA</span><span class="nav-logo-sub">Nurse Portal</span></div></a>
+  <div class="nav-links">
+    <div style="display:flex;align-items:center;gap:8px;background:rgba(5,150,105,0.15);border:1px solid rgba(5,150,105,0.3);border-radius:50px;padding:6px 16px 6px 8px;font-size:14px;">
+      <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--aurora3),var(--aurora2));display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;">NP</div>
+      Nurse Priya
+    </div>
+  </div>
+</nav>
+
+<div class="layout">
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <a href="nurse-dashboard.html"><span class="si">🏠</span> Dashboard</a>
+      <a href="nurse-dashboard.html"><span class="si">📋</span> All Requests</a>
+      <a href="nurse-chat.html"><span class="si">💬</span> Messages</a>
+      <a href="nurse-patient-profile.html" class="active"><span class="si">👥</span> My Patients</a>
+      <div class="s-divider"></div>
+      <a href="nurse-profile.html"><span class="si">👩‍⚕️</span> My Profile</a>
+      <div class="s-divider"></div>
+      <a href="login.html" class="s-logout"><span class="si">🚪</span> Logout</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+      <a href="nurse-dashboard.html" class="btn btn-outline btn-sm">← Back</a>
+      <div style="display:flex;gap:8px;">
+        <a href="nurse-chat.html" class="btn btn-green btn-sm">💬 Chat with Patient</a>
+        <a href="nurse-request-detail.html" class="btn btn-red btn-sm">🚨 View Request</a>
+      </div>
+    </div>
+
+    <!-- PROFILE HEADER -->
+    <div class="profile-header">
+      <div class="profile-avatar">PX</div>
+      <div style="flex:1;">
+        <h2 style="font-family:'Outfit',sans-serif;font-size:22px;font-weight:700;">Patient XYZ</h2>
+        <p style="color:var(--text-muted);font-size:13px;margin-top:2px;">PAT-2024-0392 · Room 204, Ward B</p>
+        <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;">
+          <span class="badge badge-pink">🚨 Emergency Request</span>
+          <span class="badge badge-blue">Room 204</span>
+          <span class="badge badge-green">Admitted</span>
+          <span class="badge badge-yellow">Cardiology</span>
+        </div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-size:12px;color:var(--text-muted);">Blood Group</div>
+        <div style="font-family:'Outfit',sans-serif;font-size:28px;font-weight:700;color:#f472b6;">B+</div>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="patient-tab-bar">
+      <button class="ptab active" onclick="showPTab('info',this)">Patient Info</button>
+      <button class="ptab" onclick="showPTab('medications',this)">Medications</button>
+      <button class="ptab" onclick="showPTab('requests',this)">Request History</button>
+    </div>
+
+    <!-- INFO TAB -->
+    <div class="ptab-content active" id="ptab-info">
+      <div class="card-grid g2">
+        <div class="section-card">
+          <h3>👤 Personal Details</h3>
+          <div class="info-row"><span class="info-label">Full Name</span><span class="info-value">Patient XYZ</span></div>
+          <div class="info-row"><span class="info-label">Age</span><span class="info-value">45 years</span></div>
+          <div class="info-row"><span class="info-label">Blood Group</span><span class="info-value">B+</span></div>
+          <div class="info-row"><span class="info-label">Phone</span><span class="info-value">+91 98765 43210</span></div>
+          <div class="info-row"><span class="info-label">Admitted</span><span class="info-value">10 Mar 2026</span></div>
+          <div class="info-row"><span class="info-label">Cause</span><span class="info-value">Hypertension, Hyperlipidaemia</span></div>
+        </div>
+        <div class="section-card">
+          <h3>🏥 Hospital Details</h3>
+          <div class="info-row"><span class="info-label">Room</span><span class="info-value">Room 204</span></div>
+          <div class="info-row"><span class="info-label">Ward</span><span class="info-value">Ward B — Cardiology</span></div>
+          <div class="info-row"><span class="info-label">Doctor</span><span class="info-value">Dr. Sharma</span></div>
+          <div class="info-row"><span class="info-label">Nurse</span><span class="info-value">Nurse Priya (You)</span></div>
+          <h3 style="margin-top:16px;">🚨 Emergency Contact</h3>
+          <div class="info-row"><span class="info-label">Name</span><span class="info-value">Mrs. XYZ (Spouse)</span></div>
+          <div class="info-row"><span class="info-label">Phone</span><span class="info-value">+91 91234 56789</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MEDICATIONS TAB -->
+    <div class="ptab-content" id="ptab-medications">
+      <div class="section-card">
+        <h3>💊 Current Medications</h3>
+        <table><thead><tr><th>Medication</th><th>Dosage</th><th>Frequency</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Atorvastatin</td><td>40mg</td><td>Once daily (night)</td><td><span class="badge badge-green">Active</span></td></tr>
+          <tr><td>Metoprolol</td><td>25mg</td><td>Twice daily</td><td><span class="badge badge-green">Active</span></td></tr>
+          <tr><td>Pantoprazole</td><td>40mg</td><td>Before breakfast</td><td><span class="badge badge-green">Active</span></td></tr>
+        </tbody></table>
+        <div style="margin-top:16px;"><button class="btn btn-outline btn-sm" onclick="alert('Medication administration recorded.')">+ Record Administration</button></div>
+      </div>
+    </div>
+
+    <!-- REQUESTS TAB -->
+    <div class="ptab-content" id="ptab-requests">
+      <div class="section-card">
+        <h3>📋 Request History</h3>
+        <div class="req-hist-item">
+          <div style="width:36px;height:36px;border-radius:10px;background:rgba(219,39,119,0.15);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">🚨</div>
+          <div style="flex:1;"><div style="font-size:14px;font-weight:600;">Emergency</div><div style="font-size:12px;color:var(--text-muted);">Chest pain & shortness of breath</div></div>
+          <div style="text-align:right;"><div style="font-size:12px;color:var(--text-muted);">Today 10:33 AM</div><span class="badge badge-yellow">Pending</span></div>
+        </div>
+        <div class="req-hist-item">
+          <div style="width:36px;height:36px;border-radius:10px;background:rgba(37,99,235,0.15);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">👩‍⚕️</div>
+          <div style="flex:1;"><div style="font-size:14px;font-weight:600;">Call Nurse</div><div style="font-size:12px;color:var(--text-muted);">General check requested</div></div>
+          <div style="text-align:right;"><div style="font-size:12px;color:var(--text-muted);">Yesterday 6:00 PM</div><span class="badge badge-green">Resolved</span></div>
+        </div>
+        <div class="req-hist-item">
+          <div style="width:36px;height:36px;border-radius:10px;background:rgba(245,158,11,0.15);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">🍽️</div>
+          <div style="flex:1;"><div style="font-size:14px;font-weight:600;">Food / Water</div><div style="font-size:12px;color:var(--text-muted);">Requested drinking water</div></div>
+          <div style="text-align:right;"><div style="font-size:12px;color:var(--text-muted);">Yesterday 2:30 PM</div><span class="badge badge-green">Resolved</span></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+function showPTab(id,el){
+  document.querySelectorAll('.ptab-content').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('ptab-'+id).classList.add('active');
+  el.classList.add('active');
+}
+</script>
+</body>
+</html>

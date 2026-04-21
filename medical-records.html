@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ELARA — Medical Records</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.tab-bar{display:flex;gap:8px;margin-bottom:24px;background:rgba(255,255,255,0.04);border-radius:50px;padding:6px;width:fit-content;}
+.tab{padding:8px 20px;border-radius:50px;font-size:13px;font-weight:600;cursor:pointer;border:none;background:transparent;color:var(--text-muted);font-family:'DM Sans',sans-serif;transition:all 0.2s;}
+.tab.active{background:var(--aurora1);color:var(--white);}
+.tab-content{display:none;}.tab-content.active{display:block;}
+.record-item{display:flex;align-items:center;gap:18px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin-bottom:10px;transition:all 0.2s;}
+.record-item:hover{background:var(--bg-card-hover);border-color:var(--border-accent);}
+.rec-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+.rec-info{flex:1;}
+.rec-info h3{font-size:14px;font-weight:600;margin-bottom:3px;}
+.rec-info p{font-size:12px;color:var(--text-muted);}
+.rec-date{font-size:12px;color:var(--text-muted);text-align:right;}
+.upload-zone{border:2px dashed rgba(124,58,237,0.4);border-radius:var(--radius-lg);padding:48px;text-align:center;cursor:pointer;transition:all 0.2s;background:rgba(124,58,237,0.04);}
+.upload-zone:hover{background:rgba(124,58,237,0.08);border-color:rgba(124,58,237,0.6);}
+</style>
+</head>
+<body>
+<div class="aurora-bg"><div class="aurora-blob"></div></div>
+<nav class="navbar">
+  <a href="index.html" class="nav-logo"><div><span class="nav-logo-text">ELARA</span><span class="nav-logo-sub">Healthcare App | TV · Mobile</span></div></a>
+  <div class="nav-links"><a href="index.html">Home</a><a href="features.html">Features</a><a href="contact.html">Contact</a><a href="contact.html#about">About Us</a><div class="nav-user"><div class="nav-avatar">PX</div>Patient XYZ</div></div>
+</nav>
+<div class="layout">
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <a href="dashboard.html"><span class="si">🏠</span> Dashboard</a>
+      <a href="appointments.html"><span class="si">📅</span> Appointments</a>
+      <a href="medical-records.html" class="active"><span class="si">🗂️</span> Medical Records</a>
+      <a href="education.html"><span class="si">🎓</span> Education</a>
+      <a href="entertainment.html"><span class="si">🎬</span> Entertainment</a>
+      <div class="s-divider"></div>
+      <a href="request-help.html"><span class="si">🆘</span> Request Help</a>
+      <a href="profile.html"><span class="si">👤</span> Profile</a>
+      <div class="s-divider"></div>
+      <a href="login.html" class="s-logout"><span class="si">🚪</span> Logout</a>
+    </nav>
+  </aside>
+  <main class="main">
+    <div class="page-header"><h1>Medical Records</h1><p>All your health documents in one place</p></div>
+
+    <div class="tab-bar">
+      <button class="tab active" onclick="showTab('lab',this)">Lab Reports</button>
+      <button class="tab" onclick="showTab('prescriptions',this)">Prescriptions</button>
+      <button class="tab" onclick="showTab('notes',this)">Doctor Notes</button>
+      <button class="tab" onclick="showTab('discharge',this)">Discharge Summary</button>
+      <button class="tab" onclick="showTab('upload',this)">Upload</button>
+    </div>
+
+    <!-- LAB REPORTS -->
+    <div class="tab-content active" id="tab-lab">
+      <div class="record-item">
+        <div class="rec-icon" style="background:rgba(37,99,235,0.15);">🧪</div>
+        <div class="rec-info"><h3>Complete Blood Count (CBC)</h3><p>Ordered by Dr. Sharma · Haematology Lab</p></div>
+        <div class="rec-date"><div>20 Mar 2026</div><span class="badge badge-green" style="margin-top:6px;">Normal</span></div>
+        <button class="btn btn-outline btn-sm">View</button>
+      </div>
+      <div class="record-item">
+        <div class="rec-icon" style="background:rgba(124,58,237,0.15);">🫀</div>
+        <div class="rec-info"><h3>Lipid Profile</h3><p>Ordered by Dr. Sharma · Biochemistry Lab</p></div>
+        <div class="rec-date"><div>18 Mar 2026</div><span class="badge badge-yellow" style="margin-top:6px;">Borderline</span></div>
+        <button class="btn btn-outline btn-sm">View</button>
+      </div>
+      <div class="record-item">
+        <div class="rec-icon" style="background:rgba(5,150,105,0.15);">🩻</div>
+        <div class="rec-info"><h3>Chest X-Ray</h3><p>Ordered by Dr. Mehta · Radiology</p></div>
+        <div class="rec-date"><div>15 Mar 2026</div><span class="badge badge-green" style="margin-top:6px;">Clear</span></div>
+        <button class="btn btn-outline btn-sm">View</button>
+      </div>
+    </div>
+
+    <!-- PRESCRIPTIONS -->
+    <div class="tab-content" id="tab-prescriptions">
+      <div class="record-item">
+        <div class="rec-icon" style="background:rgba(219,39,119,0.15);">💊</div>
+        <div class="rec-info"><h3>Atorvastatin 40mg — 1 tablet daily</h3><p>Prescribed by Dr. Sharma · Valid till 28 Apr 2026</p></div>
+        <div class="rec-date"><div>20 Mar 2026</div></div>
+        <button class="btn btn-outline btn-sm">Download</button>
+      </div>
+      <div class="record-item">
+        <div class="rec-icon" style="background:rgba(219,39,119,0.15);">💊</div>
+        <div class="rec-info"><h3>Metoprolol 25mg — twice daily</h3><p>Prescribed by Dr. Sharma · Valid till 28 Apr 2026</p></div>
+        <div class="rec-date"><div>20 Mar 2026</div></div>
+        <button class="btn btn-outline btn-sm">Download</button>
+      </div>
+      <div class="record-item">
+        <div class="rec-icon" style="background:rgba(245,158,11,0.15);">🩹</div>
+        <div class="rec-info"><h3>Pantoprazole 40mg — before breakfast</h3><p>Prescribed by Dr. Patel · Valid till 15 Apr 2026</p></div>
+        <div class="rec-date"><div>15 Mar 2026</div></div>
+        <button class="btn btn-outline btn-sm">Download</button>
+      </div>
+    </div>
+
+    <!-- DOCTOR NOTES -->
+    <div class="tab-content" id="tab-notes">
+      <div class="record-item" style="flex-direction:column;align-items:flex-start;gap:10px;">
+        <div style="display:flex;align-items:center;gap:12px;width:100%;">
+          <div class="rec-icon" style="background:rgba(124,58,237,0.15);">📝</div>
+          <div class="rec-info"><h3>Post-Consultation Note — Dr. Sharma</h3><p>28 Mar 2026 · Cardiology</p></div>
+          <button class="btn btn-outline btn-sm">Download</button>
+        </div>
+        <div style="background:rgba(255,255,255,0.04);border-radius:10px;padding:16px;width:100%;font-size:13px;color:var(--text-soft);line-height:1.7;">
+          Patient presents with mild hypertension. Lipid profile borderline high. Advised to continue Atorvastatin and Metoprolol. Low-sodium diet recommended. Follow-up in 4 weeks. Avoid strenuous physical activity until next review.
+        </div>
+      </div>
+    </div>
+
+    <!-- DISCHARGE -->
+    <div class="tab-content" id="tab-discharge">
+      <div class="record-item">
+        <div class="rec-icon" style="background:rgba(5,150,105,0.15);">🏥</div>
+        <div class="rec-info"><h3>Discharge Summary — 16 Mar 2026</h3><p>ABC Hospital · Cardiology Ward · Dr. Sharma</p></div>
+        <div class="rec-date"><div>16 Mar 2026</div></div>
+        <button class="btn btn-green btn-sm">Download PDF</button>
+      </div>
+      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;margin-top:4px;">
+        <h3 style="font-size:15px;font-weight:600;margin-bottom:16px;">Summary Details</h3>
+        <div class="info-row"><span class="info-label">Admission Date</span><span class="info-value">10 Mar 2026</span></div>
+        <div class="info-row"><span class="info-label">Discharge Date</span><span class="info-value">16 Mar 2026</span></div>
+        <div class="info-row"><span class="info-label">Diagnosis</span><span class="info-value">Hypertension, Hyperlipidaemia</span></div>
+        <div class="info-row"><span class="info-label">Procedures</span><span class="info-value">ECG, Echo, Stress Test</span></div>
+        <div class="info-row"><span class="info-label">Discharge Condition</span><span class="info-value badge badge-green">Stable</span></div>
+      </div>
+    </div>
+
+    <!-- UPLOAD -->
+    <div class="tab-content" id="tab-upload">
+      <div class="upload-zone" onclick="alert('File picker would open here.')">
+        <div style="font-size:48px;margin-bottom:16px;">📁</div>
+        <h3 style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:600;margin-bottom:8px;">Upload a Document</h3>
+        <p style="color:var(--text-muted);font-size:14px;">Click to browse or drag & drop your file here</p>
+        <p style="color:var(--text-muted);font-size:12px;margin-top:8px;">Supported: PDF, JPG, PNG (max 10MB)</p>
+        <button class="btn btn-primary" style="margin-top:20px;">Browse Files</button>
+      </div>
+    </div>
+  </main>
+</div>
+<script>
+function showTab(id,el){
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  el.classList.add('active');
+}
+</script>
+</body>
+</html>

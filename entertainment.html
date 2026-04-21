@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ELARA — Entertainment</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.ent-tabs{display:flex;gap:8px;margin-bottom:28px;flex-wrap:wrap;}
+.ent-tab{display:flex;align-items:center;gap:8px;padding:10px 20px;border-radius:50px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--text-muted);font-family:'DM Sans',sans-serif;transition:all 0.2s;}
+.ent-tab:hover{background:var(--bg-card-hover);color:var(--white);}
+.ent-tab.active{background:var(--aurora1);color:var(--white);border-color:var(--aurora1);}
+.tab-content{display:none;}.tab-content.active{display:block;}
+.ott-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:14px;margin-bottom:28px;}
+.ott-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:20px 14px;text-align:center;cursor:pointer;transition:all 0.22s;text-decoration:none;color:var(--white);}
+.ott-card:hover{background:var(--bg-card-hover);border-color:var(--border-accent);transform:translateY(-2px);}
+.ott-card .ott-icon{font-size:36px;margin-bottom:8px;}
+.ott-card .ott-name{font-size:12px;font-weight:600;}
+.movie-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;cursor:pointer;transition:all 0.22s;}
+.movie-card:hover{border-color:var(--border-accent);transform:translateY(-2px);}
+.movie-thumb{height:140px;display:flex;align-items:center;justify-content:center;font-size:52px;position:relative;}
+.movie-body{padding:12px 14px;}
+.movie-body h3{font-size:13px;font-weight:600;margin-bottom:3px;}
+.movie-body p{font-size:11px;color:var(--text-muted);}
+.music-item{display:flex;align-items:center;gap:14px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 18px;margin-bottom:8px;cursor:pointer;transition:all 0.2s;}
+.music-item:hover{background:var(--bg-card-hover);border-color:var(--border-accent);}
+.music-item .micon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.music-item .minfo{flex:1;}
+.music-item .minfo h3{font-size:14px;font-weight:600;}
+.music-item .minfo p{font-size:12px;color:var(--text-muted);}
+.music-item .mplay{font-size:20px;color:var(--text-muted);}
+.music-item:hover .mplay{color:var(--white);}
+.game-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;text-align:center;cursor:pointer;transition:all 0.22s;}
+.game-card:hover{background:var(--bg-card-hover);border-color:var(--border-accent);transform:translateY(-2px);}
+.game-card .gicon{font-size:40px;margin-bottom:10px;}
+.game-card h3{font-size:14px;font-weight:600;margin-bottom:4px;}
+.game-card p{font-size:12px;color:var(--text-muted);}
+.relax-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;transition:all 0.22s;cursor:pointer;}
+.relax-card:hover{background:var(--bg-card-hover);border-color:var(--border-accent);}
+</style>
+</head>
+<body>
+<div class="aurora-bg"><div class="aurora-blob"></div></div>
+<nav class="navbar">
+  <a href="index.html" class="nav-logo"><div><span class="nav-logo-text">ELARA</span><span class="nav-logo-sub">Healthcare App | TV · Mobile</span></div></a>
+  <div class="nav-links"><a href="index.html">Home</a><a href="features.html">Features</a><a href="contact.html">Contact</a><a href="contact.html#about">About Us</a><div class="nav-user"><div class="nav-avatar">PX</div>Patient XYZ</div></div>
+</nav>
+<div class="layout">
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <a href="dashboard.html"><span class="si">🏠</span> Dashboard</a>
+      <a href="appointments.html"><span class="si">📅</span> Appointments</a>
+      <a href="medical-records.html"><span class="si">🗂️</span> Medical Records</a>
+      <a href="education.html"><span class="si">🎓</span> Education</a>
+      <a href="entertainment.html" class="active"><span class="si">🎬</span> Entertainment</a>
+      <div class="s-divider"></div>
+      <a href="request-help.html"><span class="si">🆘</span> Request Help</a>
+      <a href="profile.html"><span class="si">👤</span> Profile</a>
+      <div class="s-divider"></div>
+      <a href="login.html" class="s-logout"><span class="si">🚪</span> Logout</a>
+    </nav>
+  </aside>
+  <main class="main">
+    <div class="page-header"><h1>Entertainment</h1><p>Relax and enjoy your stay at ABC Hospital</p></div>
+
+    <div class="ent-tabs">
+      <button class="ent-tab active" onclick="showEnt('ott',this)">🎬 Movies & OTT</button>
+      <button class="ent-tab" onclick="showEnt('music',this)">🎵 Music</button>
+      <button class="ent-tab" onclick="showEnt('games',this)">🎮 Games</button>
+      <button class="ent-tab" onclick="showEnt('relax',this)">🧘 Relaxation</button>
+    </div>
+
+    <!-- OTT -->
+    <div class="tab-content active" id="tab-ott">
+      <h3 style="font-size:14px;color:var(--text-muted);margin-bottom:14px;font-weight:500;">Available Platforms</h3>
+      <div class="ott-grid">
+        <div class="ott-card" onclick="alert('Opening Netflix...')"><div class="ott-icon">🔴</div><div class="ott-name">Netflix</div></div>
+        <div class="ott-card" onclick="alert('Opening Prime Video...')"><div class="ott-icon">🔵</div><div class="ott-name">Prime Video</div></div>
+        <div class="ott-card" onclick="alert('Opening Disney+...')"><div class="ott-icon">🌟</div><div class="ott-name">Disney+</div></div>
+        <div class="ott-card" onclick="alert('Opening Hotstar...')"><div class="ott-icon">🟣</div><div class="ott-name">Hotstar</div></div>
+        <div class="ott-card" onclick="alert('Opening YouTube...')"><div class="ott-icon">▶️</div><div class="ott-name">YouTube</div></div>
+        <div class="ott-card" onclick="alert('Opening SonyLIV...')"><div class="ott-icon">🟠</div><div class="ott-name">SonyLIV</div></div>
+      </div>
+      <h3 style="font-size:14px;color:var(--text-muted);margin-bottom:14px;font-weight:500;">Featured Films</h3>
+      <div class="card-grid g4">
+        <div class="movie-card" onclick="alert('Opening movie...')"><div class="movie-thumb" style="background:linear-gradient(135deg,rgba(124,58,237,0.3),rgba(37,99,235,0.2));">🦁</div><div class="movie-body"><h3>The Lion King</h3><p>Animation · 1h 28m</p></div></div>
+        <div class="movie-card" onclick="alert('Opening movie...')"><div class="movie-thumb" style="background:linear-gradient(135deg,rgba(5,150,105,0.25),rgba(37,99,235,0.15));">🌊</div><div class="movie-body"><h3>Finding Nemo</h3><p>Animation · 1h 40m</p></div></div>
+        <div class="movie-card" onclick="alert('Opening movie...')"><div class="movie-thumb" style="background:linear-gradient(135deg,rgba(219,39,119,0.2),rgba(124,58,237,0.2));">🚀</div><div class="movie-body"><h3>Interstellar</h3><p>Sci-Fi · 2h 49m</p></div></div>
+        <div class="movie-card" onclick="alert('Opening movie...')"><div class="movie-thumb" style="background:linear-gradient(135deg,rgba(245,158,11,0.2),rgba(219,39,119,0.15));">🧙</div><div class="movie-body"><h3>Harry Potter</h3><p>Fantasy · 2h 32m</p></div></div>
+      </div>
+    </div>
+
+    <!-- MUSIC -->
+    <div class="tab-content" id="tab-music">
+      <div class="music-item" onclick="alert('Playing: Peaceful Piano')"><div class="micon" style="background:rgba(124,58,237,0.15);">🎹</div><div class="minfo"><h3>Peaceful Piano</h3><p>Instrumental · Relaxing · 45 min playlist</p></div><div class="mplay">▶</div></div>
+      <div class="music-item" onclick="alert('Playing: Nature Sounds')"><div class="micon" style="background:rgba(5,150,105,0.15);">🌿</div><div class="minfo"><h3>Nature Sounds</h3><p>Ambient · Healing · 60 min playlist</p></div><div class="mplay">▶</div></div>
+      <div class="music-item" onclick="alert('Playing: Classical Favourites')"><div class="micon" style="background:rgba(37,99,235,0.15);">🎻</div><div class="minfo"><h3>Classical Favourites</h3><p>Classical · Soothing · 90 min playlist</p></div><div class="mplay">▶</div></div>
+      <div class="music-item" onclick="alert('Playing: Bollywood Hits')"><div class="micon" style="background:rgba(219,39,119,0.15);">🎤</div><div class="minfo"><h3>Bollywood Hits</h3><p>Bollywood · Uplifting · 30 min playlist</p></div><div class="mplay">▶</div></div>
+      <div class="music-item" onclick="alert('Playing: Guided Meditation')"><div class="micon" style="background:rgba(245,158,11,0.15);">🧘</div><div class="minfo"><h3>Guided Meditation</h3><p>Meditation · Healing · 20 min session</p></div><div class="mplay">▶</div></div>
+    </div>
+
+    <!-- GAMES -->
+    <div class="tab-content" id="tab-games">
+      <div class="card-grid g4">
+        <div class="game-card" onclick="alert('Opening Sudoku...')"><div class="gicon">🔢</div><h3>Sudoku</h3><p>Number puzzle · Easy to Hard</p><button class="btn btn-primary btn-sm" style="margin-top:12px;">Play</button></div>
+        <div class="game-card" onclick="alert('Opening Word Search...')"><div class="gicon">🔤</div><h3>Word Search</h3><p>Find hidden words</p><button class="btn btn-primary btn-sm" style="margin-top:12px;">Play</button></div>
+        <div class="game-card" onclick="alert('Opening Chess...')"><div class="gicon">♟️</div><h3>Chess</h3><p>Classic strategy game</p><button class="btn btn-primary btn-sm" style="margin-top:12px;">Play</button></div>
+        <div class="game-card" onclick="alert('Opening Crossword...')"><div class="gicon">📰</div><h3>Crossword</h3><p>Daily puzzle challenge</p><button class="btn btn-primary btn-sm" style="margin-top:12px;">Play</button></div>
+      </div>
+    </div>
+
+    <!-- RELAXATION -->
+    <div class="tab-content" id="tab-relax">
+      <div class="card-grid g2">
+        <div class="relax-card" onclick="alert('Starting: Breathing Exercise')">
+          <div style="font-size:40px;margin-bottom:12px;">🫁</div>
+          <h3 style="font-family:'Outfit',sans-serif;font-size:17px;font-weight:700;margin-bottom:8px;">Box Breathing Exercise</h3>
+          <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">4-4-4-4 breathing technique to reduce anxiety and calm the nervous system. Guided 10-minute session.</p>
+          <button class="btn btn-primary btn-sm">Start Session</button>
+        </div>
+        <div class="relax-card" onclick="alert('Starting: Body Scan')">
+          <div style="font-size:40px;margin-bottom:12px;">🧘</div>
+          <h3 style="font-family:'Outfit',sans-serif;font-size:17px;font-weight:700;margin-bottom:8px;">Body Scan Meditation</h3>
+          <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">A gentle guided meditation to help you become aware of your body and release tension. 15-minute session.</p>
+          <button class="btn btn-primary btn-sm">Start Session</button>
+        </div>
+        <div class="relax-card" onclick="alert('Starting: Sleep Story')">
+          <div style="font-size:40px;margin-bottom:12px;">😴</div>
+          <h3 style="font-family:'Outfit',sans-serif;font-size:17px;font-weight:700;margin-bottom:8px;">Sleep Story</h3>
+          <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">A soothing bedtime story narrated softly to help you drift into restful sleep. 20-minute audio.</p>
+          <button class="btn btn-primary btn-sm">Listen</button>
+        </div>
+        <div class="relax-card" onclick="alert('Starting: Visualisation')">
+          <div style="font-size:40px;margin-bottom:12px;">🌅</div>
+          <h3 style="font-family:'Outfit',sans-serif;font-size:17px;font-weight:700;margin-bottom:8px;">Healing Visualisation</h3>
+          <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">A positive visualisation exercise to boost your healing mindset and reduce stress during recovery.</p>
+          <button class="btn btn-primary btn-sm">Start</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script>
+function showEnt(id,el){
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.ent-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  el.classList.add('active');
+}
+</script>
+</body>
+</html>

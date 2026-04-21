@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ELARA — Nurse Dashboard</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.nurse-sidebar a.active{background:rgba(5,150,105,0.18);border-left:3px solid var(--aurora3);}
+.nurse-sidebar a:hover{background:rgba(5,150,105,0.08);}
+.welcome-nurse{background:linear-gradient(135deg,rgba(5,150,105,0.2),rgba(37,99,235,0.15));border:1px solid rgba(5,150,105,0.25);border-radius:var(--radius-lg);padding:28px 32px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;}
+.welcome-nurse h2{font-family:'Outfit',sans-serif;font-size:22px;font-weight:700;}
+.welcome-nurse p{color:var(--text-muted);font-size:14px;margin-top:4px;}
+.req-item{display:flex;align-items:center;gap:16px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px 20px;margin-bottom:10px;transition:all 0.2s;cursor:pointer;}
+.req-item:hover{background:var(--bg-card-hover);border-color:var(--border-accent);}
+.req-item.emergency{border-color:rgba(219,39,119,0.4);background:rgba(219,39,119,0.05);}
+.req-item.urgent{border-color:rgba(245,158,11,0.35);background:rgba(245,158,11,0.04);}
+.req-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+.req-info{flex:1;}
+.req-info h3{font-size:14px;font-weight:600;margin-bottom:3px;}
+.req-info p{font-size:12px;color:var(--text-muted);}
+.req-meta{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap;}
+.req-time{font-size:12px;color:var(--text-muted);white-space:nowrap;}
+.req-actions{display:flex;gap:8px;}
+.patient-row{display:flex;align-items:center;gap:14px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 18px;margin-bottom:8px;transition:all 0.2s;}
+.patient-row:hover{background:var(--bg-card-hover);}
+.patient-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--aurora1),var(--aurora2));display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;}
+.patient-info{flex:1;}
+.patient-info h3{font-size:14px;font-weight:600;}
+.patient-info p{font-size:12px;color:var(--text-muted);}
+.pulse{width:8px;height:8px;border-radius:50%;background:#34d399;animation:pulse-anim 2s infinite;}
+@keyframes pulse-anim{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.3);}}
+/* alert badge */
+.alert-badge{position:fixed;top:80px;right:24px;background:rgba(219,39,119,0.95);border:1px solid rgba(219,39,119,0.5);border-radius:var(--radius-lg);padding:16px 20px;width:300px;z-index:200;display:none;animation:slideIn 0.3s ease;}
+@keyframes slideIn{from{transform:translateX(320px);opacity:0;}to{transform:translateX(0);opacity:1;}}
+.alert-badge h4{font-size:14px;font-weight:700;margin-bottom:4px;}
+.alert-badge p{font-size:12px;color:rgba(255,255,255,0.8);}
+.alert-badge .close-alert{position:absolute;top:8px;right:10px;background:none;border:none;color:#fff;font-size:18px;cursor:pointer;}
+</style>
+</head>
+<body>
+<div class="aurora-bg"><div class="aurora-blob"></div></div>
+
+<!-- INCOMING ALERT -->
+<div class="alert-badge" id="incoming-alert">
+  <button class="close-alert" onclick="document.getElementById('incoming-alert').style.display='none'">×</button>
+  <h4>🚨 New Request!</h4>
+  <p>Room 204 — Patient XYZ<br>Called: <strong>Emergency</strong></p>
+  <button class="btn btn-sm" style="margin-top:10px;background:#fff;color:#831843;border:none;" onclick="window.location.href='nurse-request-detail.html'">View Request →</button>
+</div>
+
+<nav class="navbar">
+  <a href="index.html" class="nav-logo"><div><span class="nav-logo-text">ELARA</span><span class="nav-logo-sub">Nurse Portal</span></div></a>
+  <div class="nav-links">
+    <div style="display:flex;align-items:center;gap:8px;background:rgba(5,150,105,0.15);border:1px solid rgba(5,150,105,0.3);border-radius:50px;padding:6px 16px 6px 8px;font-size:14px;">
+      <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--aurora3),var(--aurora2));display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;">NP</div>
+      Nurse Priya
+    </div>
+    <a href="login.html" style="color:rgba(236,72,153,0.7);font-size:14px;text-decoration:none;padding:8px 16px;">Logout</a>
+  </div>
+</nav>
+
+<div class="layout">
+  <aside class="sidebar nurse-sidebar">
+    <nav class="sidebar-nav">
+      <a href="nurse-dashboard.html" class="active"><span class="si">🏠</span> Dashboard</a>
+      <a href="nurse-dashboard.html#requests"><span class="si">📋</span> All Requests</a>
+      <a href="nurse-chat.html"><span class="si">💬</span> Messages</a>
+      <a href="nurse-patient-profile.html"><span class="si">👥</span> My Patients</a>
+      <div class="s-divider"></div>
+      <a href="nurse-profile.html"><span class="si">👩‍⚕️</span> My Profile</a>
+      <div class="s-divider"></div>
+      <a href="login.html" class="s-logout"><span class="si">🚪</span> Logout</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <!-- WELCOME -->
+    <div class="welcome-nurse">
+      <div>
+        <h2>Good morning, Nurse Priya 👋</h2>
+        <p>Ward B — Cardiology &nbsp;·&nbsp; Shift: 8:00 AM – 8:00 PM &nbsp;·&nbsp; <span id="nurse-clock"></span></p>
+      </div>
+      <button class="btn btn-sm" style="background:rgba(219,39,119,0.15);color:#f472b6;border:1px solid rgba(219,39,119,0.3);" onclick="showAlert()">🔔 Simulate Alert</button>
+    </div>
+
+    <!-- STATS -->
+    <div class="card-grid g4" style="margin-bottom:28px;">
+      <div class="stat-card sc-green"><div class="stat-label">My Patients</div><div class="stat-value">6</div><div class="stat-icon">👥</div></div>
+      <div class="stat-card sc-purple"><div class="stat-label">Pending Requests</div><div class="stat-value">3</div><div class="stat-icon">📋</div></div>
+      <div class="stat-card sc-blue"><div class="stat-label">Resolved Today</div><div class="stat-value">8</div><div class="stat-icon">✅</div></div>
+      <div class="stat-card sc-pink"><div class="stat-label">Emergencies</div><div class="stat-value">1</div><div class="stat-icon">🚨</div></div>
+    </div>
+
+    <div class="card-grid g2">
+      <!-- LIVE REQUESTS -->
+      <div>
+        <div class="page-header"><h1>Live Requests</h1><p>Real-time incoming patient requests</p></div>
+
+        <div class="req-item emergency" onclick="window.location.href='nurse-request-detail.html'">
+          <div class="req-icon" style="background:rgba(219,39,119,0.2);">🚨</div>
+          <div class="req-info">
+            <h3>Emergency — Room 204</h3>
+            <p>Patient XYZ · Ward B · Cardiology</p>
+            <div class="req-meta"><span class="badge badge-pink">Emergency</span><span class="badge badge-yellow">Unassigned</span></div>
+          </div>
+          <div class="req-time">2 min ago</div>
+        </div>
+
+        <div class="req-item urgent" onclick="window.location.href='nurse-request-detail.html'">
+          <div class="req-icon" style="background:rgba(245,158,11,0.15);">💊</div>
+          <div class="req-info">
+            <h3>Medication Help — Room 208</h3>
+            <p>Patient ABC · Ward B · Cardiology</p>
+            <div class="req-meta"><span class="badge badge-yellow">Urgent</span><span class="badge badge-blue">Assigned to you</span></div>
+          </div>
+          <div class="req-time">8 min ago</div>
+        </div>
+
+        <div class="req-item" onclick="window.location.href='nurse-request-detail.html'">
+          <div class="req-icon" style="background:rgba(37,99,235,0.15);">👩‍⚕️</div>
+          <div class="req-info">
+            <h3>Call Nurse — Room 211</h3>
+            <p>Patient PQR · Ward B</p>
+            <div class="req-meta"><span class="badge badge-purple">Normal</span><span class="badge badge-green">On the way</span></div>
+          </div>
+          <div class="req-time">15 min ago</div>
+        </div>
+
+        <div class="req-item" onclick="window.location.href='nurse-request-detail.html'">
+          <div class="req-icon" style="background:rgba(5,150,105,0.15);">🍽️</div>
+          <div class="req-info">
+            <h3>Food / Water — Room 206</h3>
+            <p>Patient DEF · Ward B</p>
+            <div class="req-meta"><span class="badge badge-purple">Normal</span><span class="badge badge-yellow">Pending</span></div>
+          </div>
+          <div class="req-time">20 min ago</div>
+        </div>
+      </div>
+
+      <!-- MY PATIENTS -->
+      <div>
+        <div class="page-header"><h1>My Patients</h1><p>Assigned to you this shift</p></div>
+        <div class="patient-row">
+          <div class="patient-avatar">PX</div>
+          <div class="patient-info"><h3>Patient XYZ</h3><p>Room 204 · Cardiology · Dr. Sharma</p></div>
+          <div style="display:flex;gap:8px;align-items:center;"><div class="pulse"></div><a href="nurse-chat.html" class="btn btn-sm btn-outline">Chat</a><a href="nurse-patient-profile.html" class="btn btn-sm btn-green">View</a></div>
+        </div>
+        <div class="patient-row">
+          <div class="patient-avatar">AB</div>
+          <div class="patient-info"><h3>Patient ABC</h3><p>Room 208 · Cardiology · Dr. Sharma</p></div>
+          <div style="display:flex;gap:8px;align-items:center;"><div class="pulse" style="background:#fbbf24;"></div><a href="nurse-chat.html" class="btn btn-sm btn-outline">Chat</a><a href="nurse-patient-profile.html" class="btn btn-sm btn-green">View</a></div>
+        </div>
+        <div class="patient-row">
+          <div class="patient-avatar">PQ</div>
+          <div class="patient-info"><h3>Patient PQR</h3><p>Room 211 · Cardiology · Dr. Iyer</p></div>
+          <div style="display:flex;gap:8px;"><a href="nurse-chat.html" class="btn btn-sm btn-outline">Chat</a><a href="nurse-patient-profile.html" class="btn btn-sm btn-green">View</a></div>
+        </div>
+        <div class="patient-row">
+          <div class="patient-avatar">DE</div>
+          <div class="patient-info"><h3>Patient DEF</h3><p>Room 206 · Cardiology · Dr. Mehta</p></div>
+          <div style="display:flex;gap:8px;"><a href="nurse-chat.html" class="btn btn-sm btn-outline">Chat</a><a href="nurse-patient-profile.html" class="btn btn-sm btn-green">View</a></div>
+        </div>
+        <div style="margin-top:12px;"><a href="nurse-patient-profile.html" class="btn btn-outline btn-sm">View All Patients →</a></div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+function updateClock(){const n=new Date();document.getElementById('nurse-clock').textContent=n.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});}
+updateClock();setInterval(updateClock,1000);
+function showAlert(){const a=document.getElementById('incoming-alert');a.style.display='block';setTimeout(()=>a.style.display='none',8000);}
+setTimeout(showAlert,2000);
+</script>
+</body>
+</html>

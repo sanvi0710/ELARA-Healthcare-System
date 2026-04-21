@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ELARA — Nurse Profile</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.nurse-profile-header{background:linear-gradient(135deg,rgba(5,150,105,0.2),rgba(37,99,235,0.15));border:1px solid rgba(5,150,105,0.25);border-radius:var(--radius-lg);padding:32px;display:flex;align-items:center;gap:24px;margin-bottom:24px;}
+.nurse-avatar-big{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--aurora3),var(--aurora2));display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:700;flex-shrink:0;border:3px solid rgba(5,150,105,0.4);}
+.section-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px;margin-bottom:14px;}
+.section-card h3{font-size:13px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:16px;}
+.patient-mini{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);}
+.patient-mini:last-child{border-bottom:none;}
+.pm-avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--aurora1),var(--aurora2));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;}
+</style>
+</head>
+<body>
+<div class="aurora-bg"><div class="aurora-blob"></div></div>
+<nav class="navbar">
+  <a href="index.html" class="nav-logo"><div><span class="nav-logo-text">ELARA</span><span class="nav-logo-sub">Nurse Portal</span></div></a>
+  <div class="nav-links">
+    <div style="display:flex;align-items:center;gap:8px;background:rgba(5,150,105,0.15);border:1px solid rgba(5,150,105,0.3);border-radius:50px;padding:6px 16px 6px 8px;font-size:14px;">
+      <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--aurora3),var(--aurora2));display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;">NP</div>
+      Nurse Priya
+    </div>
+    <a href="login.html" style="color:rgba(236,72,153,0.7);font-size:14px;text-decoration:none;padding:8px 16px;">Logout</a>
+  </div>
+</nav>
+
+<div class="layout">
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <a href="nurse-dashboard.html"><span class="si">🏠</span> Dashboard</a>
+      <a href="nurse-dashboard.html"><span class="si">📋</span> All Requests</a>
+      <a href="nurse-chat.html"><span class="si">💬</span> Messages</a>
+      <a href="nurse-patient-profile.html"><span class="si">👥</span> My Patients</a>
+      <div class="s-divider"></div>
+      <a href="nurse-profile.html" class="active"><span class="si">👩‍⚕️</span> My Profile</a>
+      <div class="s-divider"></div>
+      <a href="login.html" class="s-logout"><span class="si">🚪</span> Logout</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <div class="page-header" style="display:flex;justify-content:space-between;align-items:flex-start;">
+      <div><h1>My Profile</h1><p>Your nurse account information</p></div>
+      <button class="btn btn-outline btn-sm" onclick="alert('Profile edit mode enabled.')">✏️ Edit Profile</button>
+    </div>
+
+    <!-- NURSE HEADER -->
+    <div class="nurse-profile-header">
+      <div class="nurse-avatar-big">NP</div>
+      <div style="flex:1;">
+        <h2 style="font-family:'Outfit',sans-serif;font-size:24px;font-weight:700;">Nurse Priya Sharma</h2>
+        <p style="color:var(--text-muted);font-size:13px;margin-top:2px;">NRS-2024-0101 · Senior Staff Nurse</p>
+        <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;">
+          <span class="badge badge-green">On Duty</span>
+          <span class="badge badge-blue">Ward B — Cardiology</span>
+          <span class="badge badge-purple">6 Patients Assigned</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-grid g2">
+      <!-- PERSONAL INFO -->
+      <div>
+        <div class="section-card">
+          <h3>👤 Personal Information</h3>
+          <div class="info-row"><span class="info-label">Full Name</span><span class="info-value">Priya Sharma</span></div>
+          <div class="info-row"><span class="info-label">Nurse ID</span><span class="info-value">NRS-2024-0101</span></div>
+          <div class="info-row"><span class="info-label">Designation</span><span class="info-value">Senior Staff Nurse</span></div>
+          <div class="info-row"><span class="info-label">Department</span><span class="info-value">Cardiology</span></div>
+          <div class="info-row"><span class="info-label">Ward Assigned</span><span class="info-value">Ward B</span></div>
+          <div class="info-row"><span class="info-label">Phone</span><span class="info-value">+91 98765 11223</span></div>
+          <div class="info-row"><span class="info-label">Email</span><span class="info-value">priya.sharma@abchospital.com</span></div>
+        </div>
+
+        <div class="section-card">
+          <h3>🕐 Shift Information</h3>
+          <div class="info-row"><span class="info-label">Current Shift</span><span class="info-value">Morning — 8:00 AM to 8:00 PM</span></div>
+          <div class="info-row"><span class="info-label">Shift Type</span><span class="info-value">12-hour</span></div>
+          <div class="info-row"><span class="info-label">Days</span><span class="info-value">Mon, Tue, Thu, Fri, Sat</span></div>
+          <div class="info-row"><span class="info-label">Off Days</span><span class="info-value">Wednesday & Sunday</span></div>
+        </div>
+
+        <!-- STATS -->
+        <div class="card-grid g2" style="margin-top:0;">
+          <div class="stat-card sc-green"><div class="stat-label">Requests Today</div><div class="stat-value">11</div><div class="stat-icon">📋</div></div>
+          <div class="stat-card sc-blue"><div class="stat-label">Resolved</div><div class="stat-value">8</div><div class="stat-icon">✅</div></div>
+        </div>
+      </div>
+
+      <!-- ASSIGNED PATIENTS -->
+      <div>
+        <div class="section-card">
+          <h3>👥 Assigned Patients (This Shift)</h3>
+          <div class="patient-mini">
+            <div class="pm-avatar">PX</div>
+            <div style="flex:1;"><div style="font-size:13px;font-weight:600;">Patient XYZ</div><div style="font-size:11px;color:var(--text-muted);">Room 204 · Hypertension</div></div>
+            <span class="badge badge-pink">Emergency</span>
+          </div>
+          <div class="patient-mini">
+            <div class="pm-avatar" style="background:linear-gradient(135deg,var(--aurora2),var(--aurora3));">AB</div>
+            <div style="flex:1;"><div style="font-size:13px;font-weight:600;">Patient ABC</div><div style="font-size:11px;color:var(--text-muted);">Room 208 · Cardiac Monitoring</div></div>
+            <span class="badge badge-yellow">Pending</span>
+          </div>
+          <div class="patient-mini">
+            <div class="pm-avatar" style="background:linear-gradient(135deg,var(--aurora4),var(--aurora1));">PQ</div>
+            <div style="flex:1;"><div style="font-size:13px;font-weight:600;">Patient PQR</div><div style="font-size:11px;color:var(--text-muted);">Room 211 · Post-surgery</div></div>
+            <span class="badge badge-green">Stable</span>
+          </div>
+          <div class="patient-mini">
+            <div class="pm-avatar" style="background:linear-gradient(135deg,var(--aurora3),var(--aurora4));">DE</div>
+            <div style="flex:1;"><div style="font-size:13px;font-weight:600;">Patient DEF</div><div style="font-size:11px;color:var(--text-muted);">Room 206 · Arrhythmia</div></div>
+            <span class="badge badge-green">Stable</span>
+          </div>
+          <div style="margin-top:14px;"><a href="nurse-patient-profile.html" class="btn btn-outline btn-sm">View All Patients →</a></div>
+        </div>
+
+        <div class="section-card">
+          <h3>🔐 Account Settings</h3>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <button class="btn btn-outline btn-sm" onclick="alert('Change PIN dialog would open here.')">🔑 Change PIN</button>
+            <button class="btn btn-outline btn-sm" onclick="alert('Notification settings updated.')">🔔 Notification Preferences</button>
+            <button class="btn btn-red btn-sm" onclick="window.location.href='login.html'">🚪 Logout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>

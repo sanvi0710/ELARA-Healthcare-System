@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ELARA — Education</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.edu-section-title{font-family:'Outfit',sans-serif;font-size:16px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.video-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:all 0.25s;cursor:pointer;}
+.video-card:hover{background:var(--bg-card-hover);border-color:var(--border-accent);transform:translateY(-2px);}
+.video-thumb{width:100%;height:140px;object-fit:cover;display:block;background:linear-gradient(135deg,rgba(124,58,237,0.3),rgba(37,99,235,0.2));position:relative;display:flex;align-items:center;justify-content:center;font-size:48px;}
+.video-thumb .play-btn{position:absolute;width:44px;height:44px;background:rgba(255,255,255,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;color:#1a1035;}
+.video-body{padding:14px 16px;}
+.video-body h3{font-size:13px;font-weight:600;margin-bottom:4px;line-height:1.4;}
+.video-body p{font-size:11px;color:var(--text-muted);margin-bottom:10px;}
+.video-meta{display:flex;justify-content:space-between;align-items:center;}
+.video-dur{font-size:11px;color:var(--text-muted);}
+.featured-video{background:var(--bg-card);border:1px solid rgba(124,58,237,0.3);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:28px;}
+.featured-thumb{width:100%;height:220px;background:linear-gradient(135deg,rgba(124,58,237,0.25),rgba(37,99,235,0.2),rgba(5,150,105,0.1));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;position:relative;}
+.featured-thumb .emoji{font-size:64px;}
+.featured-thumb .play-big{width:60px;height:60px;background:var(--aurora1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;cursor:pointer;transition:all 0.2s;}
+.featured-thumb .play-big:hover{background:#6d28d9;transform:scale(1.08);}
+.featured-body{padding:20px 24px;}
+.featured-body h2{font-family:'Outfit',sans-serif;font-size:20px;font-weight:700;margin-bottom:6px;}
+.featured-body p{color:var(--text-muted);font-size:13px;margin-bottom:16px;}
+.prog-label{display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);margin-bottom:6px;}
+</style>
+</head>
+<body>
+<div class="aurora-bg"><div class="aurora-blob"></div></div>
+<nav class="navbar">
+  <a href="index.html" class="nav-logo"><div><span class="nav-logo-text">ELARA</span><span class="nav-logo-sub">Healthcare App | TV · Mobile</span></div></a>
+  <div class="nav-links"><a href="index.html">Home</a><a href="features.html">Features</a><a href="contact.html">Contact</a><a href="contact.html#about">About Us</a><div class="nav-user"><div class="nav-avatar">PX</div>Patient XYZ</div></div>
+</nav>
+<div class="layout">
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <a href="dashboard.html"><span class="si">🏠</span> Dashboard</a>
+      <a href="appointments.html"><span class="si">📅</span> Appointments</a>
+      <a href="medical-records.html"><span class="si">🗂️</span> Medical Records</a>
+      <a href="education.html" class="active"><span class="si">🎓</span> Education</a>
+      <a href="entertainment.html"><span class="si">🎬</span> Entertainment</a>
+      <div class="s-divider"></div>
+      <a href="request-help.html"><span class="si">🆘</span> Request Help</a>
+      <a href="profile.html"><span class="si">👤</span> Profile</a>
+      <div class="s-divider"></div>
+      <a href="login.html" class="s-logout"><span class="si">🚪</span> Logout</a>
+    </nav>
+  </aside>
+  <main class="main">
+    <div class="page-header">
+      <h1>Understand Your Health Better</h1>
+      <p>Personalised education videos and guides based on your condition</p>
+    </div>
+
+    <!-- FEATURED -->
+    <div class="featured-video">
+      <div class="featured-thumb">
+        <div class="emoji">🫀</div>
+        <div class="play-big" onclick="alert('Video playing: Care Before Your Surgery')">▶</div>
+      </div>
+      <div class="featured-body">
+        <div style="margin-bottom:8px;"><span class="badge badge-purple">For You</span></div>
+        <h2>Care Before Your Surgery</h2>
+        <p>Learn what to expect before your cardiac procedure — from diet restrictions to mental preparation. Recommended by Dr. Sharma.</p>
+        <div class="prog-label"><span>Progress</span><span>2m 36s / 8m 00s</span></div>
+        <div class="prog-bar"><div class="prog-fill" style="width:33%;"></div></div>
+        <div style="margin-top:14px;display:flex;gap:10px;">
+          <button class="btn btn-primary btn-sm" onclick="alert('Continuing video...')">▶ Continue Watching</button>
+          <button class="btn btn-outline btn-sm">+ Add to Watchlist</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- YOUR CONDITION -->
+    <div class="edu-section-title">🩺 Your Condition — Hypertension & Cardiac Care</div>
+    <div class="card-grid g3" style="margin-bottom:32px;">
+      <div class="video-card" onclick="playVideo('Understanding Hypertension')">
+        <div class="video-thumb">🫀<div class="play-btn">▶</div></div>
+        <div class="video-body">
+          <h3>Understanding Hypertension</h3>
+          <p>What causes high blood pressure and how it affects your body</p>
+          <div class="video-meta"><span class="video-dur">⏱ 6m 14s</span><span class="badge badge-blue">New</span></div>
+          <div class="prog-bar" style="margin-top:8px;"><div class="prog-fill" style="width:0%;"></div></div>
+        </div>
+      </div>
+      <div class="video-card" onclick="playVideo('Post-Surgery Recovery')">
+        <div class="video-thumb">🏥<div class="play-btn">▶</div></div>
+        <div class="video-body">
+          <h3>Post-Surgery Recovery Tips</h3>
+          <p>How to care for yourself after your cardiac procedure</p>
+          <div class="video-meta"><span class="video-dur">⏱ 9m 30s</span><span class="badge badge-green">Recommended</span></div>
+          <div class="prog-bar" style="margin-top:8px;"><div class="prog-fill" style="width:0%;"></div></div>
+        </div>
+      </div>
+      <div class="video-card" onclick="playVideo('Diet & Nutrition')">
+        <div class="video-thumb">🥗<div class="play-btn">▶</div></div>
+        <div class="video-body">
+          <h3>Diet & Nutrition for Heart Health</h3>
+          <p>Foods to eat and avoid for cardiovascular wellness</p>
+          <div class="video-meta"><span class="video-dur">⏱ 7m 45s</span></div>
+          <div class="prog-bar" style="margin-top:8px;"><div class="prog-fill" style="width:60%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GENERAL HEALTH -->
+    <div class="edu-section-title">🌱 General Health Videos</div>
+    <div class="card-grid g3">
+      <div class="video-card" onclick="playVideo('Breathing Exercises')">
+        <div class="video-thumb">🧘<div class="play-btn">▶</div></div>
+        <div class="video-body"><h3>Breathing Exercises for Recovery</h3><p>Guided breathing to improve lung function</p><div class="video-meta"><span class="video-dur">⏱ 5m 00s</span></div></div>
+      </div>
+      <div class="video-card" onclick="playVideo('Medication Reminders')">
+        <div class="video-thumb">💊<div class="play-btn">▶</div></div>
+        <div class="video-body"><h3>How to Take Your Medications</h3><p>Tips for medication adherence and timing</p><div class="video-meta"><span class="video-dur">⏱ 4m 20s</span></div></div>
+      </div>
+      <div class="video-card" onclick="playVideo('Sleep & Rest')">
+        <div class="video-thumb">😴<div class="play-btn">▶</div></div>
+        <div class="video-body"><h3>Importance of Rest & Sleep</h3><p>How quality sleep aids your recovery</p><div class="video-meta"><span class="video-dur">⏱ 6m 10s</span></div></div>
+      </div>
+    </div>
+  </main>
+</div>
+<script>
+function playVideo(title){alert('▶ Now playing: '+title);}
+</script>
+</body>
+</html>

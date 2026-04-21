@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ELARA — Features</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.feat-hero{padding:120px 36px 60px;text-align:center;position:relative;z-index:1;}
+.feat-hero h1{font-family:'Outfit',sans-serif;font-size:clamp(28px,4vw,48px);font-weight:800;margin-bottom:16px;line-height:1.15;}
+.feat-hero h1 .grad{background:linear-gradient(135deg,#a78bfa,#60a5fa,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.feat-hero p{max-width:560px;margin:0 auto 32px;color:var(--text-soft);font-size:16px;line-height:1.7;}
+.features-section{padding:0 36px 60px;position:relative;z-index:1;max-width:1100px;margin:0 auto;}
+.feat-card-big{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 24px;text-align:center;transition:all 0.25s;cursor:pointer;text-decoration:none;color:var(--white);display:block;}
+.feat-card-big:hover{background:var(--bg-card-hover);border-color:var(--border-accent);transform:translateY(-4px);box-shadow:0 12px 40px rgba(124,58,237,0.2);}
+.feat-card-big .fbig-icon{font-size:44px;margin-bottom:14px;}
+.feat-card-big h3{font-family:'Outfit',sans-serif;font-size:16px;font-weight:700;margin-bottom:8px;}
+.feat-card-big p{font-size:12px;color:var(--text-muted);line-height:1.6;}
+.how-section{padding:0 36px 60px;position:relative;z-index:1;max-width:1000px;margin:0 auto;}
+.how-section h2{font-family:'Outfit',sans-serif;font-size:24px;font-weight:700;text-align:center;margin-bottom:32px;}
+.steps-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;align-items:start;position:relative;}
+.step{text-align:center;padding:24px 16px;position:relative;}
+.step-num{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--aurora1),var(--aurora2));display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;margin:0 auto 14px;}
+.step h3{font-size:14px;font-weight:700;margin-bottom:6px;}
+.step p{font-size:12px;color:var(--text-muted);line-height:1.5;}
+.step-arrow{position:absolute;right:-16px;top:28px;font-size:20px;color:var(--text-muted);}
+.cta-section{padding:0 36px 60px;position:relative;z-index:1;}
+.cta-box{background:linear-gradient(135deg,rgba(124,58,237,0.2),rgba(37,99,235,0.15),rgba(5,150,105,0.1));border:1px solid rgba(124,58,237,0.3);border-radius:24px;padding:48px;text-align:center;max-width:700px;margin:0 auto;}
+.cta-box h2{font-family:'Outfit',sans-serif;font-size:28px;font-weight:700;margin-bottom:12px;}
+.cta-box p{color:var(--text-soft);font-size:15px;margin-bottom:28px;}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+@media(max-width:700px){.steps-row{grid-template-columns:repeat(2,1fr);}.step-arrow{display:none;}}
+</style>
+</head>
+<body>
+<div class="aurora-bg"><div class="aurora-blob"></div></div>
+<nav class="navbar">
+  <a href="index.html" class="nav-logo"><div><span class="nav-logo-text">ELARA</span><span class="nav-logo-sub">Healthcare App | TV · Mobile</span></div></a>
+  <div class="nav-links"><a href="index.html">Home</a><a href="features.html" class="active">Features</a><a href="contact.html">Contact</a><a href="contact.html#about">About Us</a><a href="login.html" class="nav-btn">Log In</a></div>
+</nav>
+
+<section class="feat-hero">
+  <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(124,58,237,0.15);border:1px solid rgba(124,58,237,0.3);border-radius:50px;padding:6px 18px;font-size:12px;color:#c4b5fd;font-weight:600;letter-spacing:0.5px;margin-bottom:24px;">✦ What ELARA Offers</div>
+  <h1>Everything you need<br><span class="grad">during your hospital stay</span></h1>
+  <p>ELARA keeps you connected, informed and cared for — all in one place, right from your hospital room.</p>
+  <a href="login.html" class="btn btn-primary" style="font-size:15px;padding:12px 32px;">LOG IN TO ACCESS</a>
+</section>
+
+<section class="features-section">
+  <div class="card-grid g3" style="margin-bottom:14px;">
+    <a href="login.html" class="feat-card-big">
+      <div class="fbig-icon">📅</div>
+      <h3>Appointments</h3>
+      <p>View, book & track your appointments. See upcoming and past visits with full doctor and room details.</p>
+    </a>
+    <a href="login.html" class="feat-card-big">
+      <div class="fbig-icon">🗂️</div>
+      <h3>Medical Records</h3>
+      <p>Access all your lab reports, prescriptions, doctor notes and discharge summaries in one secure place.</p>
+    </a>
+    <a href="login.html" class="feat-card-big">
+      <div class="fbig-icon">🎓</div>
+      <h3>Education</h3>
+      <p>Condition-specific videos, pre/post surgery tips and general health guides tailored to your treatment.</p>
+    </a>
+  </div>
+  <div class="card-grid g3" style="margin-bottom:14px;">
+    <a href="login.html" class="feat-card-big">
+      <div class="fbig-icon">🎬</div>
+      <h3>Entertainment</h3>
+      <p>Movies, OTT platforms, music, relaxing meditation sessions and games to keep you comfortable.</p>
+    </a>
+    <a href="login.html" class="feat-card-big">
+      <div class="fbig-icon">🆘</div>
+      <h3>Request Help</h3>
+      <p>Call a nurse, request food/water, medication help, or raise an emergency — instantly from your device.</p>
+    </a>
+    <a href="login.html" class="feat-card-big">
+      <div class="fbig-icon">👤</div>
+      <h3>My Profile</h3>
+      <p>Your full health profile including room details, assigned doctor, emergency contacts and medical history.</p>
+    </a>
+  </div>
+  <div style="display:flex;justify-content:center;">
+    <a href="login.html" class="feat-card-big" style="max-width:340px;">
+      <div class="fbig-icon">🏠</div>
+      <h3>Dashboard</h3>
+      <p>Your personal home — quick access to all features, next appointment, notifications and live updates.</p>
+    </a>
+  </div>
+</section>
+
+<section class="how-section">
+  <h2>How It Works</h2>
+  <div class="steps-row">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Get your Patient ID</h3>
+      <p>Issued at admission by the hospital</p>
+      <div class="step-arrow">→</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>Log in to ELARA</h3>
+      <p>Use your Patient ID & password</p>
+      <div class="step-arrow">→</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Access everything</h3>
+      <p>Dashboard, records, help & more</p>
+      <div class="step-arrow">→</div>
+    </div>
+    <div class="step">
+      <div class="step-num" style="background:linear-gradient(135deg,var(--aurora3),var(--aurora2));">4</div>
+      <h3>Stay informed</h3>
+      <p>Get care, education & entertainment</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-box">
+    <h2>Ready to get started?</h2>
+    <p>Log in with your Patient ID provided by the hospital and get access to all ELARA features.</p>
+    <div class="cta-btns">
+      <a href="login.html" class="btn btn-primary" style="font-size:15px;padding:12px 32px;">Log In to Access All Features</a>
+      <a href="contact.html" class="btn btn-outline">Need Help?</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <a href="contact.html">Contact</a> | <a href="#">Privacy Policy</a> | <a href="#">Terms</a>
+  <p style="margin-top:8px;font-size:12px;">© 2024 ELARA Health Inc. All rights reserved.</p>
+</footer>
+</body>
+</html>

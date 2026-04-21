@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ELARA — Dashboard</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.welcome-banner { background:linear-gradient(135deg,rgba(124,58,237,0.2),rgba(37,99,235,0.15)); border:1px solid rgba(124,58,237,0.25); border-radius:var(--radius-lg); padding:28px 32px; margin-bottom:24px; display:flex; justify-content:space-between; align-items:center; }
+.welcome-text h2 { font-family:'Outfit',sans-serif; font-size:22px; font-weight:700; }
+.welcome-text p { color:var(--text-muted); font-size:14px; margin-top:4px; }
+.welcome-time { font-size:13px; color:var(--text-muted); text-align:right; }
+.welcome-time span { display:block; font-family:'Outfit',sans-serif; font-size:28px; font-weight:700; color:var(--white); }
+.appt-card { background:rgba(37,99,235,0.12); border:1px solid rgba(37,99,235,0.25); border-radius:var(--radius-lg); padding:20px 24px; }
+.appt-card h3 { font-size:13px; font-weight:600; color:#93c5fd; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:14px; }
+.appt-row { display:flex; align-items:center; gap:10px; margin-bottom:8px; color:var(--text-soft); font-size:14px; }
+.appt-row .alabel { color:var(--text-muted); font-size:12px; min-width:90px; }
+.notif-card { background:rgba(5,150,105,0.1); border:1px solid rgba(5,150,105,0.22); border-radius:var(--radius-lg); padding:20px 24px; }
+.notif-card h3 { font-size:13px; font-weight:600; color:#34d399; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:14px; }
+.notif-item { display:flex; align-items:flex-start; gap:10px; margin-bottom:10px; font-size:13px; color:var(--text-soft); }
+.notif-dot { width:6px; height:6px; border-radius:50%; background:#34d399; margin-top:5px; flex-shrink:0; }
+</style>
+</head>
+<body>
+<div class="aurora-bg"><div class="aurora-blob"></div></div>
+
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">
+    <div>
+      <span class="nav-logo-text">ELARA</span>
+      <span class="nav-logo-sub">Healthcare App | TV · Mobile</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="features.html">Features</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html#about">About Us</a>
+    <div class="nav-user">
+      <div class="nav-avatar">PX</div>
+      Patient XYZ
+    </div>
+  </div>
+</nav>
+
+<div class="layout">
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="active"><span class="si">🏠</span> Dashboard</a>
+      <a href="appointments.html"><span class="si">📅</span> Appointments</a>
+      <a href="medical-records.html"><span class="si">🗂️</span> Medical Records</a>
+      <a href="education.html"><span class="si">🎓</span> Education</a>
+      <a href="entertainment.html"><span class="si">🎬</span> Entertainment</a>
+      <div class="s-divider"></div>
+      <a href="request-help.html"><span class="si">🆘</span> Request Help</a>
+      <a href="profile.html"><span class="si">👤</span> Profile</a>
+      <div class="s-divider"></div>
+      <a href="login.html" class="s-logout"><span class="si">🚪</span> Logout</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <!-- WELCOME -->
+    <div class="welcome-banner fade-up">
+      <div class="welcome-text">
+        <h2>Good morning, Patient XYZ! 👋</h2>
+        <p>Welcome to ABC Hospital. Here's your daily overview.</p>
+      </div>
+      <div class="welcome-time">
+        <span id="clock">--:--</span>
+        <div id="date-str" style="font-size:13px;color:var(--text-muted);"></div>
+      </div>
+    </div>
+
+    <!-- QUICK ACCESS -->
+    <div class="page-header"><h1>Quick Access</h1></div>
+    <div class="card-grid g4" style="margin-bottom:28px;">
+      <a href="appointments.html" class="feat-card">
+        <span class="ficon">📅</span>
+        <span class="ftitle">Upcoming Appointments</span>
+        <span class="fsub">2 scheduled</span>
+      </a>
+      <a href="medical-records.html" class="feat-card">
+        <span class="ficon">🗂️</span>
+        <span class="ftitle">Medical Reports</span>
+        <span class="fsub">View all records</span>
+      </a>
+      <a href="education.html" class="feat-card">
+        <span class="ficon">🎓</span>
+        <span class="ftitle">Education</span>
+        <span class="fsub">3 videos for you</span>
+      </a>
+      <a href="request-help.html" class="feat-card" style="border-color:rgba(219,39,119,0.3);">
+        <span class="ficon">🚨</span>
+        <span class="ftitle">Emergency Help</span>
+        <span class="fsub">Call nurse instantly</span>
+      </a>
+    </div>
+
+    <!-- NEXT APPT + NOTIFICATIONS -->
+    <div class="card-grid g2">
+      <div class="appt-card">
+        <h3>📋 Next Appointment</h3>
+        <div class="appt-row"><span class="alabel">Doctor</span> Dr. Sharma</div>
+        <div class="appt-row"><span class="alabel">Date</span> 28 Mar 2026</div>
+        <div class="appt-row"><span class="alabel">Time</span> 10:30 AM</div>
+        <div class="appt-row"><span class="alabel">Department</span> Cardiology</div>
+        <div class="appt-row"><span class="alabel">Room No.</span> Room 204, Ward B</div>
+        <div style="margin-top:16px;"><a href="appointments.html" class="btn btn-blue btn-sm">View All Appointments</a></div>
+      </div>
+      <div class="notif-card">
+        <h3>🔔 Notifications</h3>
+        <div class="notif-item"><div class="notif-dot"></div> Report uploaded — Blood Test Results</div>
+        <div class="notif-item"><div class="notif-dot"></div> Appointment confirmed — Dr. Sharma, 28 Mar</div>
+        <div class="notif-item"><div class="notif-dot"></div> Message from doctor — Please avoid solid food after midnight</div>
+        <div class="notif-item" style="--notif-color:#a78bfa;"><div class="notif-dot" style="background:#a78bfa;"></div> New education video added — Pre-surgery care tips</div>
+        <div class="notif-item"><div class="notif-dot" style="background:#fbbf24;"></div> Medication reminder — 8:00 PM dose due</div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+function updateClock(){
+  const n=new Date();
+  document.getElementById('clock').textContent=n.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
+  document.getElementById('date-str').textContent=n.toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long'});
+}
+updateClock(); setInterval(updateClock,1000);
+</script>
+</body>
+</html>

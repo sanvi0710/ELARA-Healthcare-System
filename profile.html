@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ELARA — My Profile</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.profile-header{background:linear-gradient(135deg,rgba(124,58,237,0.2),rgba(37,99,235,0.15));border:1px solid rgba(124,58,237,0.25);border-radius:var(--radius-lg);padding:32px;display:flex;align-items:center;gap:24px;margin-bottom:24px;}
+.profile-avatar{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--aurora1),var(--aurora2));display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:700;flex-shrink:0;border:3px solid rgba(255,255,255,0.2);}
+.profile-info h2{font-family:'Outfit',sans-serif;font-size:24px;font-weight:700;margin-bottom:4px;}
+.profile-info p{color:var(--text-muted);font-size:14px;}
+.profile-badges{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;}
+.section-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;margin-bottom:16px;}
+.section-card h3{font-family:'Outfit',sans-serif;font-size:16px;font-weight:700;margin-bottom:18px;display:flex;align-items:center;gap:8px;}
+.edit-mode .form-input,.edit-mode .form-select{pointer-events:auto;opacity:1;}
+.view-mode .form-input,.view-mode .form-select{pointer-events:none;background:rgba(255,255,255,0.03);border-color:rgba(255,255,255,0.06);}
+</style>
+</head>
+<body>
+<div class="aurora-bg"><div class="aurora-blob"></div></div>
+<nav class="navbar">
+  <a href="index.html" class="nav-logo"><div><span class="nav-logo-text">ELARA</span><span class="nav-logo-sub">Healthcare App | TV · Mobile</span></div></a>
+  <div class="nav-links"><a href="index.html">Home</a><a href="features.html">Features</a><a href="contact.html">Contact</a><a href="contact.html#about">About Us</a><div class="nav-user"><div class="nav-avatar">PX</div>Patient XYZ</div></div>
+</nav>
+<div class="layout">
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <a href="dashboard.html"><span class="si">🏠</span> Dashboard</a>
+      <a href="appointments.html"><span class="si">📅</span> Appointments</a>
+      <a href="medical-records.html"><span class="si">🗂️</span> Medical Records</a>
+      <a href="education.html"><span class="si">🎓</span> Education</a>
+      <a href="entertainment.html"><span class="si">🎬</span> Entertainment</a>
+      <div class="s-divider"></div>
+      <a href="request-help.html"><span class="si">🆘</span> Request Help</a>
+      <a href="profile.html" class="active"><span class="si">👤</span> Profile</a>
+      <div class="s-divider"></div>
+      <a href="login.html" class="s-logout"><span class="si">🚪</span> Logout</a>
+    </nav>
+  </aside>
+  <main class="main">
+    <div class="page-header" style="display:flex;justify-content:space-between;align-items:flex-start;">
+      <div><h1>My Profile</h1><p>Your personal and medical information</p></div>
+      <button class="btn btn-outline" id="edit-btn" onclick="toggleEdit()">✏️ Edit Profile</button>
+    </div>
+
+    <!-- PROFILE HEADER -->
+    <div class="profile-header">
+      <div class="profile-avatar">PX</div>
+      <div class="profile-info">
+        <h2>Patient XYZ</h2>
+        <p>Patient ID: PAT-2024-0392</p>
+        <div class="profile-badges">
+          <span class="badge badge-blue">Room 204</span>
+          <span class="badge badge-purple">Ward B</span>
+          <span class="badge badge-green">Admitted</span>
+          <span class="badge badge-yellow">Cardiology</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="profile-form" class="view-mode">
+      <!-- PERSONAL INFO -->
+      <div class="section-card">
+        <h3>👤 Personal Information</h3>
+        <div class="card-grid g2">
+          <div class="form-group"><label class="form-label">Full Name</label><input class="form-input" value="Patient XYZ"></div>
+          <div class="form-group"><label class="form-label">Age</label><input class="form-input" value="45 years"></div>
+          <div class="form-group"><label class="form-label">Blood Group</label><select class="form-select"><option selected>B+</option><option>A+</option><option>A-</option><option>B-</option><option>O+</option><option>O-</option><option>AB+</option><option>AB-</option></select></div>
+          <div class="form-group"><label class="form-label">Phone Number</label><input class="form-input" value="+91 98765 43210"></div>
+        </div>
+      </div>
+
+      <!-- HOSPITAL INFO -->
+      <div class="section-card">
+        <h3>🏥 Hospital Details</h3>
+        <div class="card-grid g2">
+          <div class="form-group"><label class="form-label">Hospital</label><input class="form-input" value="ABC Hospital"></div>
+          <div class="form-group"><label class="form-label">Room Number</label><input class="form-input" value="Room 204"></div>
+          <div class="form-group"><label class="form-label">Ward / Department</label><input class="form-input" value="Ward B — Cardiology"></div>
+          <div class="form-group"><label class="form-label">Admission Date</label><input class="form-input" value="10 March 2026"></div>
+          <div class="form-group"><label class="form-label">Cause of Admission</label><input class="form-input" value="Hypertension & Hyperlipidaemia"></div>
+          <div class="form-group"><label class="form-label">Assigned Doctor</label><input class="form-input" value="Dr. Sharma — Cardiologist"></div>
+        </div>
+      </div>
+
+      <!-- EMERGENCY CONTACT -->
+      <div class="section-card">
+        <h3>🚨 Emergency Contact</h3>
+        <div class="card-grid g2">
+          <div class="form-group"><label class="form-label">Contact Name</label><input class="form-input" value="Mrs. XYZ (Spouse)"></div>
+          <div class="form-group"><label class="form-label">Phone Number</label><input class="form-input" value="+91 91234 56789"></div>
+          <div class="form-group"><label class="form-label">Relationship</label><input class="form-input" value="Spouse"></div>
+          <div class="form-group"><label class="form-label">Alt. Contact</label><input class="form-input" value="+91 99876 54321"></div>
+        </div>
+      </div>
+
+      <div id="save-btn" style="display:none;margin-top:4px;">
+        <button class="btn btn-primary" onclick="saveProfile()">💾 Save Changes</button>
+        <button class="btn btn-outline" onclick="cancelEdit()" style="margin-left:10px;">Cancel</button>
+      </div>
+    </div>
+  </main>
+</div>
+<script>
+let editing=false;
+function toggleEdit(){
+  editing=!editing;
+  const form=document.getElementById('profile-form');
+  const btn=document.getElementById('edit-btn');
+  const save=document.getElementById('save-btn');
+  form.className=editing?'edit-mode':'view-mode';
+  btn.textContent=editing?'🔒 Viewing':'✏️ Edit Profile';
+  save.style.display=editing?'block':'none';
+}
+function saveProfile(){alert('✅ Profile updated successfully!');cancelEdit();}
+function cancelEdit(){editing=false;document.getElementById('profile-form').className='view-mode';document.getElementById('edit-btn').textContent='✏️ Edit Profile';document.getElementById('save-btn').style.display='none';}
+</script>
+</body>
+</html>
